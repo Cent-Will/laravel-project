@@ -19,20 +19,20 @@
                     @csrf
                     <div class="mb-3">
                         <label for="username" class="form-label">Username</label>
-                        <input type="string" class="form-control" name="username">
+                        <input type="string" class="form-control" name="username" value="{{ old('username') }}">
                             @error('username')                   
                                 {{-- <div class="alert alert-danger">Username/password invalid</div> --}}
                                 <div class="error text-danger">{{ $message }}</div>
                             @enderror   
-                </div>
-                <div class="mb-3">
-                    <label for="password" class="form-label">Password</label>
-                    <input type="password" class="form-control" name="password">
-                        @error('password')                   
-                            {{-- <div class="alert alert-danger">Username/password invalid</div> --}}
-                            <div class="error text-danger">{{ $message }}</div>
-                        @enderror 
-                </div>
+                    </div>
+                    <div class="mb-3">
+                        <label for="password" class="form-label">Password</label>
+                        <input type="password" class="form-control" name="password" value="{{ old('password') }}">
+                            @error('password')                   
+                                {{-- <div class="alert alert-danger">Username/password invalid</div> --}}
+                                <div class="error text-danger">{{ $message }}</div>
+                            @enderror 
+                    </div>
                       
                 @if(session('error'))
                 <div class="alert alert-danger">

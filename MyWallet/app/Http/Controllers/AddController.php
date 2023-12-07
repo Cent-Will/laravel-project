@@ -10,24 +10,22 @@ class AddController extends Controller
         return view('add', ["title"=>'Add']);
     }
 
-    function create(){
+    function create(REQUEST $request){
         $request->validate([
             'date'=>'required',
             'nominal'=>'required | numeric',
-            'category'=>'required'],
+            'category'=>'required',
+            'description'=>'required',
+            'transaction'=>'required'],
             [
                 'date.required'=> 'Date must be filled in',
                 'password.required'=> 'Nominal must be filled in',
-                'category.required'=> 'Category must be filled in'
+                'category.required'=> 'Choose one',
+                'description.required'=> 'If there is no description fill -',
+                'transaction.required'=> 'Choose one'
             ]);
-    // VALIDASI APAKAH CREDENTIAL ADA DI DATABASE 
-        if(Auth::attempt($request->only('username', 'password'))){
-            return redirect('add');
-        }
-        else {
-             return back()->with('error', 'Invalid username/password');
-        }
-
-        return view('add');
+            
+            dd($request->all());
+        // return view('add');
     }
 }
