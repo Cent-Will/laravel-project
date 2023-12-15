@@ -14,7 +14,9 @@ class DatabaseSeeder extends Seeder
     {
         $this->call([
             MsUserSeeder::class,
-            
+            CategorySeeder::class,
+            TransactionSeeder::class,
+            TransactionTypeSeeder::class
         ]);
     }
 }

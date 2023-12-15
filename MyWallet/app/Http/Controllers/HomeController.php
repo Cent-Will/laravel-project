@@ -24,5 +24,7 @@ class HomeController extends Controller
     public function index()
     {
         return view('home', ["title"=>"Home"]);
+        // $test = Transaction::with('category_id', 'TransactionType_id')->get();
     }
+
 }

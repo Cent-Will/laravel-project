@@ -25,7 +25,17 @@ class AddController extends Controller
                 'transaction.required'=> 'Choose one'
             ]);
             
-            dd($request->all());
+            $data = $request->except(['_token']);
+            // variabel yang ingin di cek = (condition) ? jika memenuhi condition : jika tidak memenuhi contiditon
+            // $data['nominal'] = ($transaction == 1) ? $data['nominal'] : -$data['nominal'];
+            $data['nominal'] = ($data['transaction'] == 2) ? $data['nominal'] : -$data['nominal'];
+ 
+            dd($data);
+
+                
+
+            
+            // dd($request->all());   
         // return view('add');
     }
 }

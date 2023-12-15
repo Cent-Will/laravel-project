@@ -8,10 +8,10 @@
                   {{-- RADIO BUTTON PENGELUARAN/PEMASUKAN --}}
                   <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
                     <input type="checkbox" class="btn-check" id="1" autocomplete="off" name="transaction" value="1">
-                    <label class="btn btn-outline-primary" for="1">Pemasukan</label>
+                    <label class="btn btn-outline-primary" for="1">Pengeluaran</label>
                 
                     <input type="checkbox" class="btn-check" id="2" autocomplete="off" name="transaction" value="2">
-                    <label class="btn btn-outline-primary" for="2">Pengeluaran</label><br>
+                    <label class="btn btn-outline-primary" for="2">Pemasukan</label><br>
                     @error('transaction')                   
                     {{-- <div class="alert alert-danger">Username/password invalid</div> --}}
                     <div class="error text-danger">{{ $message }}</div>
@@ -54,10 +54,12 @@
                     <label for="exampleInputCategory" class="form-label">Category</label>
                       <select class="form-select" name="category" aria-label="Default select example">
                         <option value="">Category</option>
-                        <option value="1" {{ (old('category') == '1') ? 'selected' : '' }}>Food</option>
-                        <option value="2" {{ (old('category') == '2') ? 'selected' : '' }}>Transportation</option>
-                        <option value="3" {{ (old('category') == '3') ? 'selected' : '' }}>Homecare</option>
-                        <option value="4" {{ (old('category') == '4') ? 'selected' : '' }}>Lain-lain</option>
+                        <option value="1" {{ (old('category') == '1') ? 'selected' : '' }}>Makan</option>
+                        <option value="2" {{ (old('category') == '2') ? 'selected' : '' }}>Gojek</option>
+                        <option value="3" {{ (old('category') == '3') ? 'selected' : '' }}>Selfcare</option>
+                        <option value="4" {{ (old('category') == '4') ? 'selected' : '' }}>Kuota</option>
+                        <option value="5" {{ (old('category') == '5') ? 'selected' : '' }}>Bensin</option>
+                        <option value="6" {{ (old('category') == '6') ? 'selected' : '' }}>Lain-lain</option>
                       </select>
                       @error('category')                   
                         {{-- <div class="alert alert-danger">Username/password invalid</div> --}}
