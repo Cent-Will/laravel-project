@@ -10,7 +10,14 @@ use App\Http\Models\Category;
 class Transaction extends Model
 {
     use HasFactory;
-    protected $table = 'transactions';
+    protected $fillable = [
+        'id',
+        'TransactionType_id',
+        'Category_id',
+        'nominal',
+        'description',
+        'date'
+    ];
 
     public function category(): BelongsTo{
         return $this->BelongsTo(Category::class);

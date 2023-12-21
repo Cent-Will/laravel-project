@@ -5,14 +5,20 @@
             <div class="container" style="width: 90%;">
                 <form method="POST" action="{{ route('addData') }}">
                   @csrf
+
+                  @if(Session::has('sukses'))
+                    <div class="alert alert-success">
+                      {{ Session::get('sukses') }}
+                    </div>
+                  @endif
                   {{-- RADIO BUTTON PENGELUARAN/PEMASUKAN --}}
                   <div class="btn-group" role="group" aria-label="Basic checkbox toggle button group">
-                    <input type="checkbox" class="btn-check" id="1" autocomplete="off" name="transaction" value="1">
+                    <input type="checkbox" class="btn-check" id="1" autocomplete="off" name="TransactionType_id" value="1">
                     <label class="btn btn-outline-primary" for="1">Pengeluaran</label>
                 
-                    <input type="checkbox" class="btn-check" id="2" autocomplete="off" name="transaction" value="2">
+                    <input type="checkbox" class="btn-check" id="2" autocomplete="off" name="TransactionType_id" value="2">
                     <label class="btn btn-outline-primary" for="2">Pemasukan</label><br>
-                    @error('transaction')                   
+                    @error('TransactionType_id')                   
                     {{-- <div class="alert alert-danger">Username/password invalid</div> --}}
                     <div class="error text-danger">{{ $message }}</div>
                 @enderror 
@@ -52,7 +58,7 @@
                     
                     {{-- INPUT CATEGORY --}}
                     <label for="exampleInputCategory" class="form-label">Category</label>
-                      <select class="form-select" name="category" aria-label="Default select example">
+                      <select class="form-select" name="Category_id" aria-label="Default select example">
                         <option value="">Category</option>
                         <option value="1" {{ (old('category') == '1') ? 'selected' : '' }}>Makan</option>
                         <option value="2" {{ (old('category') == '2') ? 'selected' : '' }}>Gojek</option>
@@ -61,7 +67,7 @@
                         <option value="5" {{ (old('category') == '5') ? 'selected' : '' }}>Bensin</option>
                         <option value="6" {{ (old('category') == '6') ? 'selected' : '' }}>Lain-lain</option>
                       </select>
-                      @error('category')                   
+                      @error('Category_id')                   
                         {{-- <div class="alert alert-danger">Username/password invalid</div> --}}
                         <div class="error text-danger">{{ $message }}</div>
                       @enderror 
