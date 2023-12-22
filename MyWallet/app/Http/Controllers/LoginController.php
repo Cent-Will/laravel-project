@@ -24,8 +24,13 @@ class LoginController extends Controller
             ]);
     // VALIDASI APAKAH CREDENTIAL ADA DI DATABASE 
         if(Auth::attempt($request->only('username', 'password'))){
-            return redirect('/add')->with(["username"=> $request['username'], "title"=>'home']);  
+            $username = $request->input('username');
+            // Simpan username ke dalam session
+            $request->session()->put('username', $username);
+            return redirect()->route('home');
+            // ->with(["username"=> 'username', "title"=>'home']);  
             // return view('add', ["title"=>"Add"]);
+            
         }
         else {
              return back()->with('error', 'Invalid username/password');

@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
+use App\Models\Transaction;
 
 class HomeController extends Controller
 {
@@ -21,10 +22,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('home', ["title"=>"Home"]);
-        // $test = Transaction::with('category_id', 'TransactionType_id')->get();
+
+        $transactions = Transaction::with(['category', 'transactionType'])->get();
+        // MENGAMBILL VALUE USERNAME DARI SESSION
+        $username = $request->session()->get('username');
+        $header = 'Home';
+        return view('home', ['username' => $username,'header'=>$header, "transactions" => $transactions]);
     }
 
 }
