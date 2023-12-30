@@ -16,7 +16,7 @@ class TransactionSeeder extends Seeder
     {
         DB::table('transactions')->insert([
             'Category_id' => "1",
-            'nominal' => "25000",
+            'nominal' => "-25000",
             'TransactionType_id' => "1",
             'description' => 'Warteg',
             'date'=> Carbon::create(2022,12,14)

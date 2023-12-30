@@ -8,8 +8,14 @@ use Session;
 
 class AddController extends Controller
 {
+
+    public function __construct()
+    {
+        $this->middleware('auth'); // Middleware untuk memeriksa autentikasi
+    }
+
     function index() {
-        return view('add', ["title"=>'Add']);
+        return view('add', ["title"=>'Add-Transaction']);
     }
 
     function add(REQUEST $request){

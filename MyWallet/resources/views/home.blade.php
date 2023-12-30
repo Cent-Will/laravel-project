@@ -3,11 +3,19 @@
 @section('content')
 {{-- <h1>HOME PAGE</h1> --}}
 
-<div class="card">
-  <div class="card-body ">
-    @if(isset($username))
-      <h2>Welcome, {{ $username }}</h2>
-    @endif
+      <div class="container mt-4">
+        @if(isset($username))
+          <h4>Welcome, {{ $username }}</h4>
+        @endif
+   
+        <h6>
+          Uang kamu sisa 
+        </h6>
+        <h2>
+          Rp{{ $saldo }}
+        </h2>
+      </div>
+
 
     <table class="table table-striped-columns">
       <table class="table">
@@ -27,7 +35,7 @@
                 <td>{{ $transaction->id }}</td>
                 <td>{{ $transaction->date }}</td>
                 <td>{{ $transaction->transactionType->TransactionType }}</td>
-                <td>{{ $transaction->nominal }}</td>
+                <td>Rp {{number_format($transaction->nominal,0) }}</td>
                 <td>{{ $transaction->category->Category }}</td>
                 <td>{{ $transaction->description }}</td>
                 <!-- Tambahkan kolom lain sesuai kebutuhan -->

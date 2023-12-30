@@ -22,14 +22,24 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
+
+   
+
     public function index(Request $request)
     {
-
+        Transaction::displayTransaction();
         $transactions = Transaction::with(['category', 'transactionType'])->get();
+
         // MENGAMBILL VALUE USERNAME DARI SESSION
         $username = $request->session()->get('username');
-        $header = 'Home';
-        return view('home', ['username' => $username,'header'=>$header, "transactions" => $transactions]);
+        $title = 'Home';
+        $saldo = Transaction::getSaldo();
+        return view('home', [
+            'username' => $username,
+            'title'=>$title, 
+            "transactions" => $transactions,
+            'saldo' => $saldo
+            ]);
     }
 
 }

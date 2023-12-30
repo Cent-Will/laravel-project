@@ -1,8 +1,9 @@
 @extends('layout/main')
 
 @section('content')
-    <div class="container mt-3 mb-3 d-flex justify-content-center">
-            <div class="container" style="width: 90%;">
+<div class="container mt-3 mb-3 d-flex justify-content-center">
+  <div class="container" style="width: 90%;">
+    
                 <form method="POST" action="{{ route('addData') }}">
                   @csrf
 

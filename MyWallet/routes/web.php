@@ -7,16 +7,18 @@ use App\Http\Controllers\LoginController;
 use Illuminate\Support\Facades\Auth;
 
 
-Route::get('/', [LoginController::class, 'index']);
+Route::get('/', [LoginController::class, 'index'])->name('login');
 Route::post('/loginsuccess', [LoginController::class, 'login'])->name('postlogin');
 // Route::get('/logout', [LoginController::class, 'logout'])->name('logout');
 
-// Route::middleware(['auth'])->group (function () {
+Route::middleware(['auth'])->group (function () {
     // Rute-rute yang memerlukan autentikasi di sini
     Route::get('/home',[HomeController::class, 'index'])->name('home');
     Route::get('/add', [AddController::class, 'index'])->name('add');
     Route::post('/add/success', [AddController::class, 'add'])->name('addData');
-// });
+    Route::get('/logout', [LoginController::class, 'logout'])->name('logout')->middleware('auth');
+
+});
 
 // Route::get('/gatau', function(){
 //     return '<script>alert("woy")</script>';

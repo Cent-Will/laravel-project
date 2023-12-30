@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Auth;
+use Session;    
 
 class LoginController extends Controller
 {
@@ -11,6 +12,12 @@ class LoginController extends Controller
         return view('login', ["title"=>'Login']);
     }
 
+    public function logout()
+    {
+        Auth::logout();
+        Session::flash('sukses', "Berhasil logout");
+        return redirect('/');
+    }
 
     function login(Request $request){
         // dd($request->all());

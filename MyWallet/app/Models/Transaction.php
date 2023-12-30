@@ -28,6 +28,14 @@ class Transaction extends Model
     public function transactionType(): BelongsTo {
         return $this->belongsTo(TransactionType::class, 'TransactionType_id');
     }
+
+    public static function getSaldo(){
+        return self::sum('nominal');
+    }
+
+    public static function displayTransaction(){
+       self::where('nominal', '<', 0)->update(['nominal' => \DB::raw('ABS(nominal)')]);
+    }
 }
 
  

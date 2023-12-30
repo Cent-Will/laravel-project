@@ -9,6 +9,7 @@
   <body>
     
    
+
     <div class="container d-flex align-items-center justify-content-center" style="height: 100vh">
         <div class="card mb-3 col-4" > 
             <div class="container mb-3">
@@ -41,7 +42,13 @@
                 @endif
 
                 <button type="submit" class="btn btn-primary" style="width:100%">Submit</button>
-                    
+                <div class="container mt-5">
+                    @if(Session::has('sukses'))
+                    <div class="alert alert-warning">
+                        {{ Session::get('sukses') }}
+                    </div>
+                    @endif
+                </div>
 
                 </form>
             </div>
